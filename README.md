@@ -35,24 +35,24 @@ const ToDoApp = () => {
             value={newTask}
             onChange={(e) => setNewTask(e.target.value)}
             placeholder='Add a new task'
-            className='flex-grow'
+            className='flex-grow border p-2 rounded-lg'
           />
-          <Button onClick={addTask}>Add Task</Button>
+          <Button onClick={addTask} className='bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-lg'>Add Task</Button>
         </div>
         <div className='space-y-2'>
           {tasks.map((task, index) => (
-            <Card key={index} className='flex items-center justify-between p-2'>
+            <Card key={index} className='flex items-center justify-between p-2 border rounded-lg shadow-sm'>
               <CardContent className='flex-grow'>
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className={`text-lg ${task.completed ? 'line-through text-gray-400' : ''}`}
+                  className={`text-lg cursor-pointer ${task.completed ? 'line-through text-gray-400' : ''}`}
                   onClick={() => toggleTask(index)}
                 >
                   {task.text}
                 </motion.div>
               </CardContent>
-              <Button onClick={() => deleteTask(index)} className='ml-2'>Delete</Button>
+              <Button onClick={() => deleteTask(index)} className='ml-2 bg-red-500 hover:bg-red-600 text-white p-1 rounded-lg'>Delete</Button>
             </Card>
           ))}
         </div>
